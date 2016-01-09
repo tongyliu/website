@@ -21,6 +21,7 @@ body {
 
 #left-col {
 	position: fixed;
+	overflow: auto;
 	top: 0;
 	bottom: 0;
 	left: 0;
@@ -37,6 +38,7 @@ body {
 	bottom: 0;
 	right: 0;
 	width: 40%;
+	overflow-x: hidden;
 }
 
 /* = Left col items
@@ -121,8 +123,8 @@ $nav-btn-width: 144px;
 /* = Right col items
 ------------------------------------------------------------------------------*/
 
-$phone-width: 340px;
-$phone-height: 582px;
+$phone-width: 510px;
+$phone-height: 873px;
 
 .img-wrapper {
 	height: 100%;
@@ -130,13 +132,13 @@ $phone-height: 582px;
 
 	.nexus-5x {
 		display: inline-block;
-		width: $phone-width;
-		height: $phone-height;
+		height: 100%;
+		max-width: $phone-width;
+		max-height: $phone-height;
 		position: relative;
 		top: 50%;
 		left: 50%;
-		margin-top: -$phone-height / 2;
-		margin-left: -$phone-width / 2;
+		transform: translate(-50%, -50%);
 	}
 }
 
