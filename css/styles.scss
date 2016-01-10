@@ -8,92 +8,100 @@
 /* = Main layout
 ------------------------------------------------------------------------------*/
 
-$light-color: #EDEDED;
-$dark-color: #212026;
-$light-accent-color: #DEDEDE;
+$primary-color: #F1F3F3;
+$secondary-color: #212026;
+$primary-accent-color: #E6E9EA;
+
+$title-font: 'Unica One', sans-serif;
+$body-font: 'Abel', sans-serif;
 
 body {
-	background-color: $light-color;
-	color: $dark-color;
+	background-color: $primary-color;
+	color: $secondary-color;
 	padding: 0;
 	margin: 0;
 	font-family: sans-serif;
 }
 
-#left-col {
-	position: fixed;
-	overflow: auto;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	max-width: 60%;
-}
-
-#left-col:after {
-	content: '';
+header {
 	position: absolute;
 	top: 0;
 	bottom: 0;
 	left: 0;
 	right: 0;
-	background: $light-accent-color;
-	-webkit-transform-origin: 100% 0;
-	-ms-transform-origin: 100% 0;
-	transform-origin: 100% 0;
-	-webkit-transform: skew(-45deg);
-	-ms-transform: skew(-45deg);
-	transform: skew(-45deg);
-	z-index: -1;
+	background-image: url('../assets/bg.jpg');
+	background-size: cover;
+	color: $primary-color;
 }
 
-#right-col {
+#items {
 	position: absolute;
-	top: 0;
-	bottom: 0;
+	top: 100%;
+	left: 0;
 	right: 0;
-	width: 40%;
-	overflow-x: hidden;
 }
 
-/* = Left col items
+// #items:after {
+// 	content: '';
+// 	position: absolute;
+// 	top: 0;
+// 	bottom: 0;
+// 	left: 0;
+// 	right: 0;
+// 	background: $primary-accent-color;
+// 	-webkit-transform-origin: 100% 0;
+// 	-ms-transform-origin: 100% 0;
+// 	transform-origin: 100% 0;
+// 	-webkit-transform: skew(-45deg);
+// 	-ms-transform: skew(-45deg);
+// 	transform: skew(-45deg);
+// 	z-index: -1;
+// }
+
+$item-height: 600px;
+
+.item {
+	height: $item-height;
+	border-bottom: 3px solid $primary-accent-color;
+}
+
+$footer-height: 640px;
+
+footer {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: -webkit-calc(100% + 2 * 600px);
+	top: -moz-calc(100% + 2 * 600px);
+	top: calc(100% + 2 * 600px);
+	background-image: url('../assets/bg-footer.jpg');
+	background-size: cover;
+	color: $primary-color;
+	// height: $footer-height;
+	height: 100%;
+	text-align: center;
+	padding: 80px;
+	box-sizing: border-box;
+}
+
+header, footer {
+	-webkit-box-shadow: 0 0 18px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 0 18px rgba(0, 0, 0, 0.2);
+}
+
+/* = Header
 ------------------------------------------------------------------------------*/
 
-.valign-wrapper {
+.header-wrapper {
 	position: absolute;
 	width: 100%;
+	max-width: 800px;
 	top: 50%;
-	transform: translateY(-50%);
+	left: 50%;
+	transform: translate(-50%, -50%);
 	box-sizing: border-box;
+	text-align: center;
 	padding: 0 80px;
-}
-
-$title-font: 'Unica One', sans-serif;
-$body-font: 'Abel', sans-serif;
-
-h1.name {
-	font-size: 44pt;
-	text-transform: uppercase;
-	font-family: 'Unica One';
-	margin: 0;
-}
-
-.name.weebly {
-	background-image: url('../assets/weebly.png');
-	height: 75px;
-	width: 200px;
-	background-size: contain;
-}
-
-.tagline {
-	font-family: $body-font;
-	font-size: 1.4em;
-}
-
-.description {
-	display: block;
-	font-family: $body-font;
-	font-size: 1.2em;
 }
 
 $nav-btn-height: 36px;
@@ -116,17 +124,16 @@ $nav-btn-width: 144px;
 		display: inline-block;
 		width: $nav-btn-width;
 		box-sizing: border-box;
-		border: 2px solid $dark-color;
+		border: 2px solid $primary-color;
 		border-radius: 2px;
-		margin-top: 4px;
-		margin-right: 20px;
+		margin: 4px 10px;
 		-webkit-transition: 0.25s ease-in background-color;
 		-o-transition: 0.25s ease-in background-color;
 		transition: 0.25s ease-in background-color;
 	}
 
 	li:hover {
-		background-color: $dark-color;
+		background-color: $primary-color;
 	}
 
 	a {
@@ -136,33 +143,113 @@ $nav-btn-width: 144px;
 		text-transform: uppercase;
 		font-family: $body-font;
 		font-weight: bold;
-		color: $dark-color;
+		color: $primary-color;
 	}
 
 	a:hover {
-		color: $light-color;
+		color: $secondary-color;
 	}
 }
 
-/* = Right col items
+/* = General items
 ------------------------------------------------------------------------------*/
 
-$phone-width: 510px;
-$phone-height: 873px;
+.name {
+	font-size: 44pt;
+	text-transform: uppercase;
+	font-family: $title-font;
+	margin: 0;
+}
 
-.img-wrapper {
+.tagline {
+	font-family: $body-font;
+	font-size: 1.6em;
+}
+
+.description {
+	display: block;
+	font-family: $body-font;
+	font-size: 1.2em;
+}
+
+/* = Content items
+------------------------------------------------------------------------------*/
+
+.item .name {
+	font-size: 36pt;
+	display: inline-block;
+}
+
+.item .tagline {
+	margin: 18px 0;
+}
+
+.text {
 	height: 100%;
-	width: 100%;
-	background-color: $light-color;
+	padding: 80px;
+	box-sizing: border-box;
+}
 
-	.nexus-5x {
-		display: inline-block;
-		height: 100%;
-		max-width: $phone-width;
-		max-height: $phone-height;
-		position: relative;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
+.valign-wrapper {
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.image {
+	height: 100%;
+	width: 40%;
+	float: right;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.text-wrapper {
+	position: relative;
+	display: inline-block;
+	width: 100%;
+	top: 50%;
+	transform: translateY(-50%);
+	box-sizing: border-box;
+	padding: 0 80px;
+}
+
+.weebly {
+	.image {
+		float: left;
 	}
+
+	.name {
+		background-image: url('../assets/weebly.png');
+		height: 75px;
+		width: 200px;
+		background-size: contain;
+	}
+
+	.image {
+		background-image: url('../assets/device.png');
+	}
+}
+
+.companion {
+	.name {
+		background-image: url('../assets/companion.png');
+		height: 80px;
+		width: 360px;
+		background-size: contain;
+	}
+
+	.image {
+		background-image: url('../assets/device.png');
+	}
+}
+
+/* = Footer
+------------------------------------------------------------------------------*/
+
+#contact-heading {
+	font-family: $title-font;
+	font-size: 36pt;
+	text-transform: uppercase;
 }
