@@ -71,20 +71,29 @@ body {
 $title-font: 'Unica One', sans-serif;
 $body-font: 'Abel', sans-serif;
 
-.name {
+h1.name {
 	font-size: 44pt;
 	text-transform: uppercase;
 	font-family: 'Unica One';
 	margin: 0;
 }
 
+.name.weebly {
+	background-image: url('../assets/weebly.png');
+	height: 75px;
+	width: 200px;
+	background-size: contain;
+}
+
 .tagline {
 	font-family: $body-font;
+	font-size: 1.4em;
 }
 
 .description {
 	display: block;
 	font-family: $body-font;
+	font-size: 1.2em;
 }
 
 $nav-btn-height: 36px;
