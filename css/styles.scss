@@ -65,6 +65,7 @@ $item-height: 600px;
 .item {
 	height: $item-height;
 	border-bottom: 3px solid $primary-accent-color;
+	padding: 20px 0;
 }
 
 $footer-height: 640px;
@@ -73,9 +74,9 @@ footer {
 	position: absolute;
 	left: 0;
 	right: 0;
-	top: -webkit-calc(100% + 2 * 600px);
-	top: -moz-calc(100% + 2 * 600px);
-	top: calc(100% + 2 * 600px);
+	top: -webkit-calc(100% + 2 * 640px);
+	top: -moz-calc(100% + 2 * 640px);
+	top: calc(100% + 2 * 640px);
 	background-image: url('../assets/bg-footer.jpg');
 	background-size: cover;
 	color: $primary-color;
