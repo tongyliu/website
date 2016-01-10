@@ -32,6 +32,8 @@ header {
 	background-image: url('../assets/bg.jpg');
 	background-size: cover;
 	color: $primary-color;
+	-webkit-box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+	box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
 }
 
 #items {
@@ -82,11 +84,8 @@ footer {
 	text-align: center;
 	padding: 80px;
 	box-sizing: border-box;
-}
-
-header, footer {
-	-webkit-box-shadow: 0 0 18px rgba(0, 0, 0, 0.2);
-	box-shadow: 0 0 18px rgba(0, 0, 0, 0.2);
+	-webkit-box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+	box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
 }
 
 /* = Header
