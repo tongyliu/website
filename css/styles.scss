@@ -80,9 +80,9 @@ footer {
 	position: absolute;
 	left: 0;
 	right: 0;
-	top: -webkit-calc(100% + 2 * 640px);
-	top: -moz-calc(100% + 2 * 640px);
-	top: calc(100% + 2 * 640px);
+	top: -webkit-calc(100% + 4 * 640px);
+	top: -moz-calc(100% + 4 * 640px);
+	top: calc(100% + 4 * 640px);
 	background-image: url('../assets/bg-footer.jpg');
 	background-size: cover;
 	color: $primary-color;
@@ -220,16 +220,12 @@ $nav-btn-width: 144px;
 	padding: 0 80px;
 }
 
-.weebly {
-	.image {
-		float: left;
-	}
-
+.companion {
 	.name {
-		background-image: url('../assets/weebly.png');
-		height: 75px;
-		width: 200px;
+		background-image: url('../assets/companion.png');
 		background-size: contain;
+		height: 80px;
+		width: 360px;
 	}
 
 	.image {
@@ -237,16 +233,31 @@ $nav-btn-width: 144px;
 	}
 }
 
-.companion {
+.weebly {
 	.name {
-		background-image: url('../assets/companion.png');
-		height: 80px;
-		width: 360px;
+		background-image: url('../assets/weebly.png');
 		background-size: contain;
+		height: 75px;
+		width: 200px;
 	}
 
 	.image {
+		background-image: url('../assets/macbook.jpg');
+		float: left;
+		width: 60%;
+	}
+}
+
+.clavis {
+	.image {
 		background-image: url('../assets/device.png');
+	}
+}
+
+.and-more {
+	.image {
+		background-image: url('../assets/device.png');
+		float: left;
 	}
 }
 
