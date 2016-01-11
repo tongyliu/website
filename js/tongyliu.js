@@ -5,6 +5,6 @@
  * Tong Liu, Jan 2016
  */
 
-$(document).ready(function() {
-	// TODO later
-});
+(function() {
+	new WOW().init();
+})();
