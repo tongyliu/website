@@ -45,13 +45,13 @@ header {
 
 .trapezoid-wrapper {
 	position: absolute;
-	height: 2050px;
+	height: 2060px;
 	top: 100%;
 	left: -500px;
 	right: -500px;
 	transform-origin: left center;
 	transform: rotate(11deg);
-	overflow: hidden;
+	background-color: $primary-color;
 	z-index: 1;
 
 	.trapezoid {
@@ -59,25 +59,29 @@ header {
 		position: relative;
 	}
 
-	.trapezoid:nth-of-type(odd) {
+	.one, .three {
 		background-color: $primary-color;
+
+		.content {
+			transform: rotate(-11deg);
+		}
 	}
 
-	.trapezoid:nth-of-type(even) {
+	.two, .four {
 		background-color: $primary-accent-color;
 		transform: rotate(-22deg);
+
+		.content {
+			transform: rotate(11deg);
+		}
 	}
 
 	.two {
 		top: -482px;
 	}
 
-	.three {
-		top: -972px;
-	}
-
 	.four {
-		top: -1380px;
+		top: -400px;
 	}
 }
 
@@ -92,22 +96,24 @@ header {
 	-moz-box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.6);
 	box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.6);
 	z-index: 2;
+	pointer-events: none;
 }
 
-
-#items {
+.top-section {
 	position: absolute;
-	top: 100%;
+	top: 0;
+	bottom: 50%;
 	left: 0;
 	right: 0;
 }
 
-$item-height: 600px;
-
-.item {
-	height: $item-height;
-	border-bottom: 3px solid $primary-accent-color;
-	padding: 20px 0;
+.bottom-section {
+	position: absolute;
+	top: 50%;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	overflow: hidden;
 }
 
 footer {
@@ -213,12 +219,44 @@ $nav-btn-width: 144px;
 /* = Content items
 ------------------------------------------------------------------------------*/
 
-.item .name {
+.content {
+	width: 100%;
+	height: 600px;
+	position: absolute;
+	box-sizing: border-box;
+	z-index: 99;
+}
+
+.one .content {
+	top: -70px;
+	padding-left: 366px;
+	padding-right: 638px;
+}
+
+.two .content {
+	top: -52px;
+	padding-left: 563px;
+	padding-right: 438px;
+}
+
+.three .content {
+	top: -30px;
+	padding-left: 570px;
+	padding-right: 432px;
+}
+
+.four .content {
+	top: -95px;
+	padding-left: 885px;
+	padding-right: 318px;
+}
+
+.content .name {
 	font-size: 48px;
 	display: inline-block;
 }
 
-.item .tagline {
+.content .tagline {
 	margin: 18px 0;
 }
 
@@ -275,7 +313,7 @@ $nav-btn-width: 144px;
 	}
 
 	.image {
-		background-image: url('../assets/macbook.jpg');
+		background-image: url('../assets/macbook.png');
 		float: left;
 		width: 60%;
 	}
