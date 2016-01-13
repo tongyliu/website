@@ -41,7 +41,6 @@ header {
 	background-image: url('../assets/bg.jpg');
 	background-size: cover;
 	color: $primary-color;
-	z-index: -1;
 }
 
 .trapezoid-wrapper {
@@ -52,14 +51,10 @@ header {
 	right: -500px;
 	transform-origin: left center;
 	transform: rotate(11deg);
-	-webkit-box-shadow: 0 0 40px rgba(0, 0, 0, 0.3) inset;
-	-moz-box-shadow: 0 0 40px rgba(0, 0, 0, 0.3) inset;
-	box-shadow: 0 0 40px rgba(0, 0, 0, 0.3) inset;
 	overflow: hidden;
 	z-index: 1;
 
 	.trapezoid {
-		z-index: 1;
 		height: 1000px;
 		position: relative;
 	}
@@ -84,6 +79,19 @@ header {
 	.four {
 		top: -1380px;
 	}
+}
+
+.trapezoid-wrapper:before {
+	content: '';
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	-webkit-box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.6);
+	-moz-box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.6);
+	box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.6);
+	z-index: 2;
 }
 
 
@@ -114,12 +122,8 @@ footer {
 	color: $primary-color;
 	height: 100%;
 	text-align: center;
-	padding: 80px;
+	padding: 200px 80px;
 	box-sizing: border-box;
-	-webkit-box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
-	-moz-box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
-	box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
-	z-index: -1;
 }
 
 /* = Header
