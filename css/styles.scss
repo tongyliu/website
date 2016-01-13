@@ -30,6 +30,8 @@ body {
 	height: 100vh;
 	overflow-x: hidden;
 	-webkit-overflow-scrolling: touch;
+	background-image: url('../assets/bg.jpg');
+	background-size: cover;
 }
 
 header {
@@ -38,8 +40,6 @@ header {
 	bottom: -500px;
 	left: 0;
 	right: 0;
-	background-image: url('../assets/bg.jpg');
-	background-size: cover;
 	color: $primary-color;
 }
 
@@ -85,20 +85,6 @@ header {
 	}
 }
 
-.trapezoid-wrapper:before {
-	content: '';
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	-webkit-box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.6);
-	-moz-box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.6);
-	box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.6);
-	z-index: 2;
-	pointer-events: none;
-}
-
 .top-section {
 	position: absolute;
 	top: 0;
@@ -123,8 +109,6 @@ footer {
 	top: calc(100% + 2150px);
 	top: -moz-calc(100% + 2150px);
 	top: -webkit-calc(100% + 2150px);
-	background-image: url('../assets/bg-footer.jpg');
-	background-size: cover;
 	color: $primary-color;
 	height: 100%;
 	text-align: center;
