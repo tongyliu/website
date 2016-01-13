@@ -6,13 +6,14 @@
  */
 
 $(function() {
-	new WOW().init();
+	new WOW({ scrollContainer: '.wrapper' }).init();
+
 
 	// Prevent any overflow-x from showing
 	$('.wrapper').scroll(function() {
-		if ($(document).scrollLeft()) {
+		if ($('.wrapper').scrollLeft()) {
 			$('.wrapper').scrollLeft(0);
-		} 
+		}
 	});
 
 	// iOS devices seem to require a clip to stop the .trapezoid-wrapper
