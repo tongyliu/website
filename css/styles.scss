@@ -261,12 +261,14 @@ $offset: 25%;
 	background-color: $primary-color;
 	-webkit-clip-path: polygon(0 0, 100% $offset, 100%  100% - $offset, 0 100%);
 	clip-path: polygon(0 0, 100% $offset, 100%  100% - $offset, 0 100%);
+	clip-path: url('../clippath.svg#odd-trapezoid');
 }
 
 .trapezoid.two, .trapezoid.four {
 	background-color: $primary-accent-color;
 	-webkit-clip-path: polygon(0 $offset, 100% 0, 100% 100%, 0 100% - $offset);
 	clip-path: polygon(0 $offset, 100% 0, 100% 100%, 0 100% - $offset);
+	clip-path: url('../clippath.svg#even-trapezoid');
 }
 
 /* = Footer
