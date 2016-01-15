@@ -16,8 +16,8 @@ $title-font: 'Unica One', sans-serif;
 $body-font: 'Abel', sans-serif;
 
 $item-height: 800px;
-$offset: 25%;
-$offset-px: $item-height * .25;
+$offset: 30%;
+$offset-px: $item-height * .30;
 
 body, html {
 	overflow-x: hidden;
@@ -172,7 +172,7 @@ $nav-btn-width: 144px;
 
 @for $i from 2 through 4 {
    .item:nth-of-type(#{$i}) {
-       top: ($i - 1) * -200px;
+       top: ($i - 1) * -$offset-px;
    }
 }
 
@@ -254,8 +254,6 @@ $nav-btn-width: 144px;
 	height: 100%;
 	width: 100%;
 }
-
-$offset: 25%;
 
 .trapezoid.one, .trapezoid.three {
 	background-color: $primary-color;
