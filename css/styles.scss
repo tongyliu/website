@@ -25,7 +25,7 @@ body, html {
 }
 
 body {
-	// background-color: $header-dark-color;
+	background-color: $header-dark-color;
 	background-image: url('../assets/bg.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -48,6 +48,10 @@ header {
 	top: 100%;
 	left: 0;
 	right: 0;
+	height: -webkit-calc(4 * #{$item-height} - 3 * #{$offset-px});
+	height: -moz-calc(4 * #{$item-height} - 3 * #{$offset-px});
+	height: calc(4 * #{$item-height} - 3 * #{$offset-px});
+	z-index: 1;
 }
 
 footer {
@@ -281,10 +285,23 @@ $nav-btn-width: 144px;
 /* = Responsive
 ------------------------------------------------------------------------------*/
 
-body.fixed-bg {
-	background-size: auto;
-	background-repeat: repeat;
-	background-attachment: scroll;
+body.scrolling-bg {
+	header {
+		background-image: url('../assets/bg.jpg');
+		background-size: cover;
+	}
+
+	footer {
+		background-image: url('../assets/bg.jpg');
+		background-size: cover;
+		top: -webkit-calc(100% + 4 * #{$item-height} - 4 * #{$offset-px});
+		top: -moz-calc(100% + 4 * #{$item-height} - 4 * #{$offset-px});
+		top: calc(100% + 4 * #{$item-height} - 4 * #{$offset-px});
+		height: -webkit-calc(100% + #{$offset-px});
+		height: -moz-calc(100% + #{$offset-px});
+		height: calc(100% + #{$offset-px});
+		padding-top: $offset-px + 80px;
+	}
 }
 
 @media screen and (max-width: 740px) {
@@ -296,16 +313,13 @@ body.fixed-bg {
 	$offset-px: $item-height * 0.1;
 
 	body {
-		background-size: auto;
-		background-repeat: repeat;
-		background-attachment: scroll;
+		background-image: none;
 		font-size: 88%;
 	}
 
 	header {
 		position: relative;
-		height: $header-height;
-		bottom: 0;
+		height: $header-height + $offset-px;
 		background-image: url('../assets/bg.jpg');
 		background-size: cover;
 	}
@@ -323,6 +337,9 @@ body.fixed-bg {
 
 	#items {
 		top: $header-height;
+		height: -webkit-calc(4 * #{$item-height} - 3 * #{$offset-px});
+		height: -moz-calc(4 * #{$item-height} - 3 * #{$offset-px});
+		height: calc(4 * #{$item-height} - 3 * #{$offset-px});
 	}
 
 	@for $i from 2 through 4 {
@@ -341,6 +358,9 @@ body.fixed-bg {
 		.text {
 			padding-left: 30px;
 			padding-right: 30px;
+		}
+
+		.description {
 			text-align: justify;
 		}
 	}
@@ -365,16 +385,14 @@ body.fixed-bg {
 		clip-path: polygon(0 $offset, 100% 0, 100% 100%, 0 100% - $offset);
 	}
 
-	footer {
-		top: -webkit-calc(#{$header-height} + 4 * #{$item-height} - 3 * #{$offset-px});
-		top: -moz-calc(#{$header-height} + 4 * #{$item-height} - 3 * #{$offset-px});
-		top: calc(#{$header-height} + 4 * #{$item-height} - 3 * #{$offset-px});
-		height: $footer-height;
-		padding-left: 0px;
-		padding-right: 0px;
+	footer, body.scrolling-bg footer {
+		top: -webkit-calc(#{$header-height} + 4 * #{$item-height} - 4 * #{$offset-px});
+		top: -moz-calc(#{$header-height} + 4 * #{$item-height} - 4 * #{$offset-px});
+		top: calc(#{$header-height} + 4 * #{$item-height} - 4 * #{$offset-px});
+		height: $footer-height + $offset-px;
+		padding: 80px 0;
 		background-image: url('../assets/bg.jpg');
 		background-size: cover;
-		background-repeat: no-repeat;
 	}
 }
 
