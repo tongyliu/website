@@ -199,6 +199,8 @@ $nav-btn-width: 144px;
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
+	position: relative;
+	z-index: 1;
 }
 
 .text-wrapper {
@@ -218,9 +220,10 @@ $nav-btn-width: 144px;
 		height: 80px;
 		width: 360px;
 	}
-
-	.image {
-		background-image: url('../assets/device.png');
+	.text {
+		padding-right: -webkit-calc(40% + 40px);
+		padding-right: -moz-calc(40% + 40px);
+		padding-right: calc(40% + 40px);
 	}
 }
 
@@ -233,8 +236,8 @@ $nav-btn-width: 144px;
 	}
 
 	.image {
-		background-image: url('../assets/device.png');
 		float: left;
+		width: 55%;
 	}
 }
 
@@ -248,6 +251,93 @@ $nav-btn-width: 144px;
 	.image {
 		background-image: url('../assets/device.png');
 		float: left;
+	}
+}
+
+/* = Card stacks
+------------------------------------------------------------------------------*/
+
+$card-max-width: 65%;
+$card-max-height: 100%;
+
+.card-stack {
+	transform: translateZ(0);
+}
+
+.card-stack .card {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	max-width: $card-max-width;
+	max-height: $card-max-height;
+	transition: 0.4s ease transform;
+	cursor: pointer;
+}
+
+.card-stack .card.animating {
+	opacity: 0;
+	transition: 0.6s ease-out all;
+	-webkit-transform-style: preserve-3d;
+}
+
+.card-stack.right {
+	.card {
+		-webkit-box-shadow: 14px 0 14px rgba(0, 0, 0, 0.2);
+		-moz-box-shadow: 14px 0 14px rgba(0, 0, 0, 0.2);
+		box-shadow: 14px 0 14px rgba(0, 0, 0, 0.2);
+	}
+
+	.card._1 {
+		transform: translate3D(-65%, -50%, 0);
+		z-index: 4;
+	}
+
+	.card._2 {
+		transform: translate3D(-55%, -50%, 0) scale(0.9);
+		z-index: 3;
+	}
+
+	.card._3 {
+		transform: translate3D(-45%, -50%, 0) scale(0.8);
+		z-index: 2;
+	}
+
+	.card._4 {
+		transform: translate3D(-35%, -50%, 0) scale(0.7);
+		z-index: 0;
+	}
+
+	.card.animating {
+		transform: translate3D(100%, -50%, 0);
+		z-index: 99;
+	}
+}
+
+.card-stack.left {
+	.card {
+		-webkit-box-shadow: -14px 0 14px rgba(0, 0, 0, 0.2);
+		-moz-box-shadow: -14px 0 14px rgba(0, 0, 0, 0.2);
+		box-shadow: -14px 0 14px rgba(0, 0, 0, 0.2);
+	}
+
+	.card._1 {
+		transform: translate3D(-45%, -50%, 0);
+		z-index: 3;
+	}
+
+	.card._2 {
+		transform: translate3D(-55%, -50%, 0) scale(0.9);
+		z-index: 2;
+	}
+
+	.card._3 {
+		transform: translate3D(-65%, -50%, 0) scale(0.8);
+		z-index: 1;
+	}
+
+	.card.animating {
+		transform: translate3D(-200%, -50%, 0);
+		z-index: 99;
 	}
 }
 
