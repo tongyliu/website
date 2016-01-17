@@ -196,21 +196,8 @@ $nav-btn-width: 144px;
 	height: 100%;
 	width: 40%;
 	float: right;
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-position: center;
 	position: relative;
 	z-index: 1;
-}
-
-.text-wrapper {
-	position: relative;
-	display: inline-block;
-	width: 100%;
-	top: 50%;
-	transform: translateY(-50%);
-	box-sizing: border-box;
-	padding: 30px 80px;
 }
 
 .companion {
@@ -241,17 +228,21 @@ $nav-btn-width: 144px;
 	}
 }
 
-.clavis {
-	.image {
-		background-image: url('../assets/device.png');
-	}
+.clavis img {
+	max-width: 65%;
+	max-height: 100%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	-webkit-box-shadow: 14px 0 14px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: 14px 0 14px rgba(0, 0, 0, 0.2);
+	box-shadow: 14px 0 14px rgba(0, 0, 0, 0.2);
 }
 
-.and-more {
-	.image {
-		background-image: url('../assets/device.png');
-		float: left;
-	}
+.and-more .text {
+	max-width: 70%;
+	margin: 0 auto;
 }
 
 /* = Card stacks
@@ -463,6 +454,10 @@ body.scrolling-bg {
 	.weebly .name {
 		height: 56.25px;
 		width: 150px;
+	}
+
+	.and-more .text {
+		max-width: 100%;
 	}
 
 	.trapezoid.one, .trapezoid.three {
