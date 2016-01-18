@@ -90,6 +90,19 @@
 	</div>
 	<footer>
 		<div id="contact-heading">Get in touch with me.</div>
+		<form id="contact-form" onsubmit="return ContactForm.submit()" novalidate>
+			<div class="input-wrapper">
+				<label class="input-heading required" for="name-input">Name</label>
+				<input id="name-input" type="text" placeholder="Foo Bar"/>
+				<label class="input-heading required" for="email-input">Email</label>
+				<input id="email-input" type="email" placeholder="me@example.com"/>
+				<label class="input-heading required" for="msg-input">Message</label>
+				<textarea id="msg-input" placeholder="Hello, world!"></textarea>
+				<button class="hidden" type="submit" value="submit">Send</button>
+			</div>
+			<div class="waiting-dots hidden"><span>.</span><span>.</span><span>.</span></div>
+			<div class="confirmation hidden"></div>
+		</form>
 	</footer>
 	<!-- Scripts -->
 	<script type="text/javascript" src="js/wow.min.js"></script>

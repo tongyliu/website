@@ -114,6 +114,7 @@ $nav-btn-width: 144px;
 		text-decoration: none;
 		text-transform: uppercase;
 		font-family: $body-font;
+		font-size: 1em;
 		font-weight: bold;
 		color: $primary-color;
 		-webkit-transition: 0.25s ease-in background-color;
@@ -363,6 +364,164 @@ $card-max-height: 100%;
 	text-transform: uppercase;
 }
 
+#contact-form {
+	width: 85%;
+	max-width: 600px;
+	margin: 20px auto;
+	position: relative;
+
+	.input-wrapper {
+		overflow: hidden;
+		transition: 0.4s ease-out all;
+		position: relative;
+		z-index: 1;
+
+		&.hidden {
+			transform: scaleY(0);
+			opacity: 0;
+		}
+	}
+
+	.input-heading {
+		display: block;
+		text-align: left;
+		margin: 5px 0;
+		font-family: $body-font;
+		font-size: 1.125em;
+		font-weight: 900;
+		text-transform: uppercase;
+	}
+
+	.input-heading.required:after {
+		content: '*';
+		display: inline-block;
+		margin-left: 5px;
+	}
+
+	$input-height: 40px;
+
+	input, textarea {
+		background-color: rgba(255, 255, 255, 0.3);
+		width: 100%;
+		margin: 0 0 20px;
+		padding: 0 20px;
+		font-family: $body-font;
+		font-size: 1em;
+		font-weight: 900;
+		color: $primary-color;
+		border: none;
+		border-radius: 2px;
+		box-sizing: border-box;
+	}
+
+	input {
+		display: block;
+		height: $input-height;
+	}
+
+	textarea {
+		height: 4 * $input-height;
+		padding: 14px 20px;
+		resize: vertical;
+	}
+
+	input:focus, textarea:focus, button:focus {
+		outline: none;
+	}
+
+	::-webkit-input-placeholder {
+		color: $primary-accent-color;
+		font-style: italic;
+		font-weight: 400;
+	}
+	::-moz-placeholder {
+		color: $primary-accent-color;
+		font-style: italic;
+		font-weight: 400;
+	}
+	:-ms-input-placeholder {
+		color: $primary-accent-color;
+		font-style: italic;
+		font-weight: 400;
+	}
+	:-moz-placeholder {
+		color: $primary-accent-color;
+		font-style: italic;
+		font-weight: 400;
+	}
+
+	button {
+		height: $nav-btn-height;
+		width: $nav-btn-width;
+		margin: 15px 0;
+		background-color: transparent;
+		color: $primary-color;
+		font-size: 1em;
+		font-family: $body-font;
+		font-weight: bold;
+		text-transform: uppercase;
+		border: 2px solid $primary-color;
+		border-radius: 2px;
+		box-sizing: border-box;
+		transition: 0.25s ease-in all;
+		opacity: 1;
+
+		&.hidden {
+			opacity: 0;
+			visibility: hidden;
+		}
+
+		&:hover {
+			background-color: $primary-color;
+			color: $secondary-color;
+		}
+	}
+
+	.confirmation {
+		position: absolute;
+		width: 100%;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		transition: 0.4s ease-in opacity;
+		font-family: $body-font;
+		font-size: 1.625em;
+		z-index: 0;
+
+		&.hidden {
+			opacity: 0;
+		}
+	}
+}
+
+.waiting-dots {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	transition: 0.4s ease opacity;
+	opacity: 1;
+	z-index: 0;
+
+	span {
+		font-family: $title-font;
+		font-size: 5em;
+		animation-name: bounce;
+		animation-duration: 1s;
+		animation-iteration-count: infinite;
+	}
+
+	@for $i from 2 through 3 {
+		span:nth-of-type(#{$i}) {
+			animation-delay: 0.2s * $i;
+		}
+	}
+
+	&.hidden {
+		opacity: 0;
+	}
+}
+
 /* = Responsive
 ------------------------------------------------------------------------------*/
 
@@ -382,6 +541,10 @@ body.scrolling-bg {
 		height: -moz-calc(100% + #{$offset-px});
 		height: calc(100% + #{$offset-px});
 		padding-top: $offset-px + 80px;
+	}
+
+	body {
+		background-image: none;
 	}
 }
 
@@ -474,7 +637,8 @@ body.scrolling-bg {
 		top: -webkit-calc(#{$header-height} + 4 * #{$item-height} - 4 * #{$offset-px});
 		top: -moz-calc(#{$header-height} + 4 * #{$item-height} - 4 * #{$offset-px});
 		top: calc(#{$header-height} + 4 * #{$item-height} - 4 * #{$offset-px});
-		height: $footer-height + $offset-px;
+		min-height: $footer-height + $offset-px;
+		height: auto;
 		padding: 80px 0;
 		background-image: url('../assets/bg.jpg');
 		background-size: cover;

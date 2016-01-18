@@ -8,6 +8,7 @@
 /*- Card stacks --------------------------------------------------------------*/
 
 var CardStack = function(options) {
+	options = options || {};
 	this.target = options.target || '.card-stack';
 	this.animationDuration = options.animationDuration || 1000;
 	this.cards = [];
@@ -51,6 +52,89 @@ CardStack.prototype.init = function() {
 	}
 };
 
+/*- Contact form -------------------------------------------------------------*/
+
+var ContactForm = (function() {
+	var myForm = {};
+
+	var updateStatus = function(validationStatus) {
+		if (myForm.isValid != validationStatus) {
+			var $submitButton = $(myForm.target).find('button').first();
+			$submitButton.toggleClass('hidden');
+			myForm.isValid = validationStatus;
+		}
+	}
+
+	var validate = function(changed) {
+		var isValidName = myForm.nameField.val().length > 0;
+		var isValidEmail = (/.+@.+\..+/i).test(myForm.emailField.val());
+		var isValidMsg = myForm.msgField.val().length > 0;
+		updateStatus(isValidName && isValidEmail && isValidMsg);
+	}
+
+	var showWaitingAnimation = function() {
+		var $target = $(myForm.target);
+		$target.find('.input-wrapper').addClass('hidden');
+		$target.find('.waiting-dots').removeClass('hidden');
+	}
+
+	var showConfirmation = function(success) {
+		var $target = $(myForm.target);
+		$confirmation = $target.find('.confirmation').first();
+		if (success) {
+			$confirmation.html(
+				'Thanks for reaching out! I\'ll respond as soon as possible.'
+			);
+		} else {
+			$confirmation.html(
+				'Oops! There was an error while sending. Reload the page to retry.'
+			);
+		}
+		$target.find('.waiting-dots').addClass('hidden');
+		$confirmation.removeClass('hidden');
+	}
+
+	var submissionUrl = 'contact.php';
+
+	myForm.init = function(options) {
+		options = options || {};
+		myForm.target = options.target || '#contact-form';
+		myForm.isValid = false;
+
+		var $target = $(myForm.target);
+		myForm.nameField = $target.find('#name-input');
+		myForm.emailField = $target.find('#email-input');
+		myForm.msgField = $target.find('#msg-input');
+
+		myForm.nameField.on('input', function() {
+			validate();
+		});
+		myForm.emailField.on('input', function() {
+			validate();
+		});
+		myForm.msgField.on('input', function() {
+			validate();
+		});
+	}
+
+	myForm.submit = function() {
+		if (myForm.isValid) {
+			showWaitingAnimation();
+			var params = {
+				name: myForm.nameField.val(),
+				email: myForm.emailField.val(),
+				msg: myForm.msgField.val()
+			}
+			$.post(submissionUrl, params, function(data) {
+				showConfirmation(data.success);
+			}, 'json');
+		}
+		return false;
+	}
+
+	return myForm;
+})();
+
 /*- Helpers ------------------------------------------------------------------*/
 
 var isMobileDevice = function() {
@@ -68,4 +152,6 @@ $(function() {
 
 	new CardStack({ target: '#companion-stack' }).init();
 	new CardStack({ target: '#weebly-stack' }).init();
+
+	ContactForm.init();
 });
