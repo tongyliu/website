@@ -10,7 +10,7 @@
 var CardStack = function(options) {
 	options = options || {};
 	this.target = options.target || '.card-stack';
-	this.animationDuration = options.animationDuration || 1000;
+	this.animationDuration = options.animationDuration || 400;
 	this.cards = [];
 	this.front = 0;
 };

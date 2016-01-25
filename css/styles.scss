@@ -264,12 +264,12 @@ $card-max-height: 100%;
 	max-height: $card-max-height;
 	transition: 0.4s ease transform;
 	cursor: pointer;
-}
 
-.card-stack .card.animating {
-	opacity: 0;
-	transition: 0.6s ease-out all;
-	-webkit-transform-style: preserve-3d;
+	&.animating {
+		opacity: 0;
+		transition: 0.6s ease-out all;
+		-webkit-transform-style: preserve-3d;
+	}
 }
 
 .card-stack.right {
@@ -282,6 +282,10 @@ $card-max-height: 100%;
 	.card._1 {
 		transform: translate3D(-65%, -50%, 0);
 		z-index: 4;
+
+		&:hover {
+			transform: translate3D(-65%, -50%, 0) scale(1.05);
+		}
 	}
 
 	.card._2 {
@@ -300,7 +304,7 @@ $card-max-height: 100%;
 	}
 
 	.card.animating {
-		transform: translate3D(100%, -50%, 0);
+		transform: translate3D(100%, -50%, 0) !important;
 		z-index: 99;
 	}
 }
@@ -315,6 +319,10 @@ $card-max-height: 100%;
 	.card._1 {
 		transform: translate3D(-45%, -50%, 0);
 		z-index: 3;
+
+		&:hover {
+			transform: translate3D(-45%, -50%, 0) scale(1.05);
+		}
 	}
 
 	.card._2 {
@@ -328,7 +336,7 @@ $card-max-height: 100%;
 	}
 
 	.card.animating {
-		transform: translate3D(-200%, -50%, 0);
+		transform: translate3D(-200%, -50%, 0) !important;
 		z-index: 99;
 	}
 }
