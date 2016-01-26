@@ -173,6 +173,10 @@ $nav-btn-width: 144px;
 		z-index: 99;
 	}
 
+	a {
+		color: $secondary-color;
+	}
+
 	.name {
 		font-size: 3em;
 		display: inline-block;
