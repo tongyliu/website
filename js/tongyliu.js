@@ -154,4 +154,10 @@ $(function() {
 	new CardStack({ target: '#weebly-stack' }).init();
 
 	ContactForm.init();
+
+	$('#contact-button').on('click', function() {
+		$('html, body').animate({
+			scrollTop: $('#contact-heading').offset().top
+		}, 600);
+	});
 });

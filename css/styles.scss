@@ -554,6 +554,42 @@ $card-max-height: 100%;
 	}
 }
 
+.profile-buttons {
+	max-width: 640px;
+	margin: 0 auto;
+	text-align: right;
+
+	.button {
+		display: inline-block;
+		width: 48px;
+		height: 48px;
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+
+	.github {
+		background-image: url('../assets/github-button.png');
+		margin: 0 20px;
+	}
+
+	.linkedin {
+		background-image: url('../assets/linkedin-button.png');
+	}
+}
+
+$greyed-out-color: #CCCCCC;
+
+.footer-tag {
+	max-width: 640px;
+	font-size: 0.8em;
+	font-family: $body-font;
+	color: $greyed-out-color;
+	margin: 10px auto;
+	padding-top: 10px;
+	border-top: 1px solid $greyed-out-color;
+}
+
 /* = Responsive
 ------------------------------------------------------------------------------*/
 
@@ -674,6 +710,10 @@ body.scrolling-bg {
 
 	.footer-wrapper {
 		padding: 80px 30px 0;
+	}
+
+	.profile-buttons {
+		padding: 0 30px;
 	}
 }
 
