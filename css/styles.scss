@@ -8,9 +8,9 @@
 /* = Main layout
 ------------------------------------------------------------------------------*/
 
-$primary-color: #F1F3F3;
+$primary-color: #FFFFFF;
 $secondary-color: #212026;
-$primary-accent-color: #E6E9EA;
+$primary-accent-color: #EDEDED;
 $header-dark-color: #0A0B0D;
 
 $title-font: 'Unica One', sans-serif;
@@ -20,13 +20,15 @@ $item-height: 800px;
 $offset: 30%;
 $offset-px: $item-height * .30;
 
+$bg-img: url('../assets/bg.jpg');
+
 body, html {
 	overflow-x: hidden;
 }
 
 body {
 	background-color: $header-dark-color;
-	background-image: url('../assets/bg.jpg');
+	background-image: $bg-img;
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
@@ -81,13 +83,17 @@ footer {
 	left: 50%;
 	transform: translate(-50%, -50%);
 	text-align: center;
+	padding: 30px;
+	background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+	background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+	background-image: linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+	border-radius: 4px;
 }
 
 $nav-btn-height: 36px;
 $nav-btn-width: 144px;
 
 .link-bar {
-	height: $nav-btn-height;
 	line-height: $nav-btn-height;
 	margin-top: 24px;
 	-webkit-transition: 0.25s ease all;
@@ -238,9 +244,9 @@ $nav-btn-width: 144px;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	-webkit-box-shadow: 14px 0 14px rgba(0, 0, 0, 0.2);
-	-moz-box-shadow: 14px 0 14px rgba(0, 0, 0, 0.2);
-	box-shadow: 14px 0 14px rgba(0, 0, 0, 0.2);
+	-webkit-box-shadow: 5px 0 10px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: 5px 0 10px rgba(0, 0, 0, 0.2);
+	box-shadow: 5px 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .and-more .text {
@@ -276,9 +282,9 @@ $card-max-height: 100%;
 
 .card-stack.right {
 	.card {
-		-webkit-box-shadow: 14px 0 14px rgba(0, 0, 0, 0.2);
-		-moz-box-shadow: 14px 0 14px rgba(0, 0, 0, 0.2);
-		box-shadow: 14px 0 14px rgba(0, 0, 0, 0.2);
+		-webkit-box-shadow: 5px 0 10px rgba(0, 0, 0, 0.2);
+		-moz-box-shadow: 5px 0 10px rgba(0, 0, 0, 0.2);
+		box-shadow: 5px 0 10px rgba(0, 0, 0, 0.2);
 	}
 
 	.card._1 {
@@ -313,9 +319,9 @@ $card-max-height: 100%;
 
 .card-stack.left {
 	.card {
-		-webkit-box-shadow: -14px 0 14px rgba(0, 0, 0, 0.2);
-		-moz-box-shadow: -14px 0 14px rgba(0, 0, 0, 0.2);
-		box-shadow: -14px 0 14px rgba(0, 0, 0, 0.2);
+		-webkit-box-shadow: -5px 0 10px rgba(0, 0, 0, 0.2);
+		-moz-box-shadow: -5px 0 10px rgba(0, 0, 0, 0.2);
+		box-shadow: -5px 0 10px rgba(0, 0, 0, 0.2);
 	}
 
 	.card._1 {
@@ -368,6 +374,16 @@ $card-max-height: 100%;
 /* = Footer
 ------------------------------------------------------------------------------*/
 
+.footer-wrapper {
+	max-width: 640px;
+	margin: 0 auto;
+	padding: 30px;
+	background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+	background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+	background-image: linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+	border-radius: 4px;
+}
+
 #contact-heading {
 	font-family: $title-font;
 	font-size: 3em;
@@ -376,7 +392,7 @@ $card-max-height: 100%;
 }
 
 #contact-form {
-	width: 85%;
+	width: 100%;
 	max-width: 600px;
 	margin: 20px auto;
 	position: relative;
@@ -539,12 +555,12 @@ $card-max-height: 100%;
 
 body.scrolling-bg {
 	header {
-		background-image: url('../assets/bg.jpg');
+		background-image: $bg-img;
 		background-size: cover;
 	}
 
 	footer {
-		background-image: url('../assets/bg.jpg');
+		background-image: $bg-img;
 		background-size: cover;
 		top: -webkit-calc(100% + 4 * #{$item-height} - 4 * #{$offset-px});
 		top: -moz-calc(100% + 4 * #{$item-height} - 4 * #{$offset-px});
@@ -560,7 +576,7 @@ body.scrolling-bg {
 	}
 }
 
-@media screen and (max-width: 740px) {
+@media screen and (max-width: 700px) {
 	$header-height: 450px;
 	$footer-height: 600px;
 
@@ -576,14 +592,14 @@ body.scrolling-bg {
 	header {
 		position: relative;
 		height: $header-height + $offset-px;
-		background-image: url('../assets/bg.jpg');
+		background-image: $bg-img;
 		background-size: cover;
 	}
 
 	.header-wrapper {
-		top: -webkit-calc(50%);
-		top: -moz-calc(50%);
-		top: calc(50%);
+		top: 0;
+		transform: translateX(-50%);
+		padding-top: 60px;
 
 		.name, .tagline, .description {
 			padding-left: 20px;
@@ -651,9 +667,13 @@ body.scrolling-bg {
 		top: calc(#{$header-height} + 4 * #{$item-height} - 4 * #{$offset-px});
 		min-height: $footer-height + $offset-px;
 		height: auto;
-		padding: 80px 0;
-		background-image: url('../assets/bg.jpg');
+		padding: 0;
+		background-image: $bg-img;
 		background-size: cover;
+	}
+
+	.footer-wrapper {
+		padding: 80px 30px 0;
 	}
 }
 
