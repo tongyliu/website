@@ -1,0 +1,128 @@
+/**
+ * styles.scss
+ *
+ * We'll see about this one.
+ */
+
+$bg-color: white;
+$name-color: #D10000;
+$font-color: #000000;
+$line-color: #000000;
+
+$item-spacing: 20px;
+
+html, body {
+	position: relative;
+	height: 100%;
+	max-width: 960px;
+	margin: 0 auto;
+	padding: 0;
+	background-color: $bg-color;
+}
+
+.main-wrapper {
+	position: absolute;
+	top: 45%;
+	transform: translateY(-50%);
+	width: 100%;
+	max-width: 720px;
+	padding: 0 80px;
+	box-sizing: border-box;
+	font-family: 'Ubuntu Mono';
+}
+
+.name {
+	border-bottom: 3px solid $line-color;
+	color: $name-color;
+
+	h1 {
+		margin: $item-spacing 0;
+		font-size: 3em;
+	}
+}
+
+.words {
+	font-size: 1.4em;
+	color: $font-color;
+	margin: $item-spacing 0;
+}
+
+.buttons ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+
+	li {
+		display: inline-block;
+	}
+}
+
+.button {
+	$button-height: 32px;
+
+	display: inline-block;
+	border-bottom: 2px solid $line-color;
+	font-size: 1.6em;
+	color: $font-color;
+	text-decoration: none;
+	margin-right: 10px;
+	transition: 0.5s ease all;
+	position: relative;
+	height: $button-height;
+	line-height: $button-height;
+
+	&::after {
+		content: '';
+		display: block;
+		position: absolute;
+		bottom: -2px;
+		height: $button-height + 2px;;
+		width: 100%;
+		background-color: $line-color;
+		transform: scale(1, 0) translate3D(0, 0, 0);
+		transform-origin: 50% 100%;
+		z-index: -1;
+		transition: 0.5s ease all;
+	}
+
+	&:hover {
+		color: $bg-color;
+
+		&::after {
+			transform: scale(1.1, 1) translate3D(0, 0, 0);
+		}
+	}
+}
+
+.cursor {
+	display: inline-block;
+	width: 0.6em;
+	height: 1em;
+	margin-bottom: -2px;
+	background-color: $font-color;
+}
+
+.blink {
+	animation: 1.5s blink ease-out infinite;
+}
+
+@keyframes blink {
+	from, to {
+		opacity: 0;
+	}
+	50% {
+		opacity: 1;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.main-wrapper {
+		padding: 0 40px;
+	}
+}
+
+@media screen and (max-width: 400px) {
+	.main-wrapper {
+		padding: 0 20px;
+	}
+}
