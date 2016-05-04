@@ -17,6 +17,7 @@ if (isset($_POST['name'], $_POST['email'], $_POST['msg'])) {
 <head>
 	<title>Tong Liu - Contact</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/x-icon" href="favicon.ico"/>
 	<link rel="stylesheet" type="text/css" href="css/styles.css"/>
 	<link rel="stylesheet" type="text/css" href='https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,400italic,700,700italic'/>
 </head>
