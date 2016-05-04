@@ -77,7 +77,7 @@ html, body {
 	color: $font-color;
 	text-decoration: none;
 	margin-right: 10px;
-	transition: 0.5s ease color;
+	transition: 0.5s ease color, 0.8s ease opacity;
 	position: relative;
 	height: $button-height;
 	line-height: $button-height;
@@ -88,7 +88,7 @@ html, body {
 		display: block;
 		position: absolute;
 		bottom: -2px;
-		height: $button-height + 2px;;
+		height: $button-height + 2px;
 		width: 100%;
 		background-color: $line-color;
 		transform: scale(1, 0) translate3D(0, 0, 0);
@@ -115,6 +115,18 @@ html, body {
 			&::after {
 				transform: scale(1, 0) translate3D(0, 0, 0);
 			}
+		}
+	}
+
+	&--small {
+		$small-button-height: 24px;
+
+		font-size: 1.2em;
+		height: $small-button-height;
+		line-height: $small-button-height;
+
+		&::after {
+			height: $small-button-height + 2px;
 		}
 	}
 }
@@ -154,11 +166,21 @@ html, body {
 	}
 }
 
-.contact-form {
+#contact-form {
 	margin: 0 auto;
 
 	.button {
 		margin: 5px 0 0;
+	}
+}
+
+.input-wrapper {
+	transition: 1s ease all;
+	transform-origin: 100% 50%;
+
+	&--hidden {
+		opacity: 0;
+		transform: scaleY(0);
 	}
 }
 
@@ -186,6 +208,7 @@ html, body {
 		border-radius: 0;
 		font-family: 'Ubuntu Mono';
 		background-color: transparent;
+		transition: 1s ease border-color;
 
 		&:focus {
 			outline: none;
@@ -203,6 +226,7 @@ html, body {
 		position: absolute;
 		bottom: 0px;
 		height: 10px;
+		transition: 1s ease border-color;
 	}
 
 	&::before {
@@ -214,6 +238,26 @@ html, body {
 		right: 0;
 		border-right: 2px solid $line-color;
 	}
+
+	&--invalid {
+		&::before, &::after, input {
+			border-color: #910000;
+		}
+	}
+}
+
+button {
+	background: none;
+	border: none;
+	outline: none;
+	margin: 0;
+	padding: 0;
+	font-family: 'Ubuntu Mono';
+}
+
+.confirmation {
+	font-size: 1.4em;
+	margin: ($item-spacing * 1.5) 0 0;
 }
 
 .profile-buttons a {
@@ -238,6 +282,10 @@ html, body {
 		background-image: url('../assets/linkedin.png');
 		width: 80px;
 	}
+}
+
+.back-button {
+	margin-top: $item-spacing;
 }
 
 /*= Responsive
