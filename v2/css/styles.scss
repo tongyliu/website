@@ -4,8 +4,11 @@
  * We'll see about this one.
  */
 
-$bg-color: white;
-$name-color: #D10000;
+/*= Main
+------------------------------------------------------------------------------*/
+
+$bg-color: #FFFFFF;
+$title-color: #1D5086;
 $font-color: #000000;
 $line-color: #000000;
 
@@ -33,7 +36,7 @@ html, body {
 
 .name {
 	border-bottom: 3px solid $line-color;
-	color: $name-color;
+	color: $title-color;
 
 	h1 {
 		margin: $item-spacing 0;
@@ -66,10 +69,11 @@ html, body {
 	color: $font-color;
 	text-decoration: none;
 	margin-right: 10px;
-	transition: 0.5s ease all;
+	transition: 0.5s ease color;
 	position: relative;
 	height: $button-height;
 	line-height: $button-height;
+	cursor: pointer;
 
 	&::after {
 		content: '';
@@ -82,7 +86,7 @@ html, body {
 		transform: scale(1, 0) translate3D(0, 0, 0);
 		transform-origin: 50% 100%;
 		z-index: -1;
-		transition: 0.5s ease all;
+		transition: 0.5s ease transform;
 	}
 
 	&:hover {
@@ -90,6 +94,19 @@ html, body {
 
 		&::after {
 			transform: scale(1.1, 1) translate3D(0, 0, 0);
+		}
+	}
+
+	&--disabled {
+		opacity: 0.5;
+		cursor: not-allowed;
+
+		&:hover {
+			color: $font-color;
+
+			&::after {
+				transform: scale(1, 0) translate3D(0, 0, 0);
+			}
 		}
 	}
 }
@@ -114,6 +131,109 @@ html, body {
 		opacity: 1;
 	}
 }
+
+/*= Contact Page
+------------------------------------------------------------------------------*/
+
+.section-heading {
+	color: $title-color;
+	border-bottom: 3px solid $line-color;
+	display: inline-block;
+
+	h2 {
+		margin: 5px 0;
+		font-size: 2.5em;
+	}
+}
+
+.contact-form {
+	margin: 0 auto;
+
+	.button {
+		margin: 5px 0 0;
+	}
+}
+
+.form-field {
+	$input-height: 54px;
+
+	margin: $item-spacing 0;
+	position: relative;
+	max-width: 492px;
+	height: $input-height;
+
+	label {
+		color: $font-color;
+		font-size: 1.4em;
+		display: block;
+	}
+
+	input, textarea {
+		width: 100%;
+		height: $input-height - 22px;
+		font-size: 1em;
+		margin: 0;
+		padding: 6px 9px;
+		border: none;
+		border-bottom: 2px solid $line-color;
+		box-sizing: border-box;
+		font-family: 'Ubuntu Mono';
+		background-color: transparent;
+
+		&:focus {
+			outline: none;
+		}
+	}
+
+	textarea {
+		resize: none;
+	}
+
+	&::before, &::after {
+		content: '';
+		display: block;
+		position: absolute;
+		bottom: 0;
+		height: 10px;
+	}
+
+	&::before {
+		left: 0;
+		border-left: 2px solid $line-color;
+	}
+
+	&::after {
+		right: 0;
+		border-right: 2px solid $line-color;
+	}
+}
+
+.profile-buttons a {
+	text-decoration: none;
+}
+
+.profile-button {
+	display: inline-block;
+	height: 30px;
+	margin: ($item-spacing * 1.5) 0 0;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: 0 50%;
+
+	&--github {
+		background-image: url('../assets/github.png');
+		background-position: -4px 50%;
+		width: 70px;
+	}
+
+	&--linkedin {
+		background-image: url('../assets/linkedin.png');
+		width: 80px;
+	}
+}
+
+/*= Responsive
+------------------------------------------------------------------------------*/
 
 @media screen and (max-width: 500px) {
 	.main-wrapper {
