@@ -25,13 +25,21 @@ html, body {
 
 .main-wrapper {
 	position: absolute;
-	top: 45%;
+	top: 50%;
 	transform: translateY(-50%);
 	width: 100%;
 	max-width: 720px;
 	padding: 0 80px;
 	box-sizing: border-box;
 	font-family: 'Ubuntu Mono';
+
+	&--home {
+		top: 46%;
+	}
+
+	&--contact {
+		top: 48%;
+	}
 }
 
 .name {
@@ -155,7 +163,7 @@ html, body {
 }
 
 .form-field {
-	$input-height: 54px;
+	$input-height: 52px;
 
 	margin: $item-spacing 0;
 	position: relative;
@@ -169,14 +177,13 @@ html, body {
 	}
 
 	input, textarea {
-		width: 100%;
-		height: $input-height - 22px;
+		width: calc(100% - 18px);
 		font-size: 1em;
 		margin: 0;
 		padding: 6px 9px;
 		border: none;
 		border-bottom: 2px solid $line-color;
-		box-sizing: border-box;
+		border-radius: 0;
 		font-family: 'Ubuntu Mono';
 		background-color: transparent;
 
@@ -187,13 +194,14 @@ html, body {
 
 	textarea {
 		resize: none;
+		max-height: 128px;
 	}
 
 	&::before, &::after {
 		content: '';
 		display: block;
 		position: absolute;
-		bottom: 0;
+		bottom: 0px;
 		height: 10px;
 	}
 
