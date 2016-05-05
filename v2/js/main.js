@@ -29,10 +29,23 @@ var Linkify = (function() {
   };
 
   exports.transform = function(str) {
+    var delimiters = [];
     _.forEach(_linkMappings, function(v, k) {
-      str = str.replace(k, '<a href="' + v + '">' + k + '</a>');
+      delimiters.push('(' + k + ')');
     });
-    return str;
+
+    var regex = new RegExp(delimiters.join('|'));
+    var parts = str.split(regex);
+
+    var matchCount = 0;
+    return _.chain(parts).filter().map(function(str) {
+      if (_linkMappings[str]) {
+        var key = str + matchCount++;
+        return <a key={key} href={_linkMappings[str]}>{str}</a>;
+      } else {
+        return str;
+      }
+    }).value();
   };
 
   return exports;
@@ -50,19 +63,19 @@ var Teletype = React.createClass({
   },
 
   render: function() {
+    var content = Linkify.transform(this.state.message).concat(
+      <span
+        className={this.state.typing ? 'cursor' : 'cursor blink'}
+        key='cursor'
+      />
+    );
+
     return (
       <div>
         <div className='name'>
           <h1>Tong Liu</h1>
         </div>
-        <div className='words'>
-          <span
-            dangerouslySetInnerHTML={
-              {__html: Linkify.transform(this.state.message)}
-            }
-          />
-          <span className={this.state.typing ? 'cursor' : 'cursor blink'}/>
-        </div>
+        <div className='words'>{content}</div>
         <nav className='buttons'>
           <ul>
             <li><a className='button' href='#'>Resume</a></li>

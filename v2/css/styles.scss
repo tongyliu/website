@@ -54,8 +54,10 @@ html, body {
 
 .words {
 	font-size: 1.4em;
+	min-height: 23px;
 	color: $font-color;
 	margin: $item-spacing 0;
+	white-space: pre-wrap;
 
 	a, a:visited {
 		text-decoration: none;
@@ -143,6 +145,9 @@ html, body {
 	height: 1em;
 	margin-bottom: -2px;
 	background-color: $font-color;
+	// This is weird, but it fixes
+	// jumpy reflows when lines wrap
+	position: absolute;
 }
 
 .blink {
