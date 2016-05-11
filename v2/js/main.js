@@ -78,7 +78,7 @@ var Teletype = React.createClass({
         <div className='words'>{content}</div>
         <nav className='buttons'>
           <ul>
-            <li><a className='button' href='#'>Resume</a></li>
+            <li><a className='button' href='resume'>Resume</a></li>
             <li><a className='button' href='contact'>Contact</a></li>
           </ul>
         </nav>
