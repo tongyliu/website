@@ -1,22 +1,18 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+var classNames = require('classnames');
 var _ = require('lodash');
 
-var TYPING_DELAY = 100;
-var BACKSPACE_DELAY = 80;
-var DISPLAY_DURATION = 6400;
-var THINKING_DURATION = 1600;
+var TYPING_DELAY = 80;
+var ENTER_DELAY = 160;
+var THINKING_DELAY = 2000;
 
-var getThinkingDuration = function() {
-  return THINKING_DURATION * (Math.random() * 2 + 1);
-};
-
-var messages = [
-  'Computer science engineering student @ UMich',
-  'Summer 2016 software engineering intern @ Cisco',
-  'Engineering intern @ Weebly, summer 2015',
-  'Software developer @ Companion',
-  'Full stack & mobile developer'
+var messages = [ 
+  'Hi, I\'m Tong!',
+  'I\'m a software engineer & student at the University of Michigan.',
+  'This summer, I\'ll be working at Cisco. I\'ve also worked on full-stack and mobile development at places including Weebly and Companion.',
+  'This site is still under construction ' + String.fromCharCode(8212) + ' but you can view more on my resume, GitHub, or LinkedIn.',
+  'Thanks for stopping by!'
 ];
 
 var Linkify = (function() {
@@ -52,94 +48,82 @@ var Linkify = (function() {
 })();
 
 Linkify.init({
-  Cisco: 'https://cisco.com',
-  Weebly: 'https://weebly.com',
-  Companion: 'http://companionapp.io'
+  Cisco: 'https://www.cisco.com',
+  Weebly: 'https://www.weebly.com',
+  Companion: 'http://companionapp.io',
+  GitHub: 'https://github.com/tongyliu',
+  LinkedIn: 'https://www.linkedin.com/in/tong-liu-7a55489b',
+  resume: 'resume.pdf'
 });
 
 var Teletype = React.createClass({
   getInitialState: function() {
-    return { 'message': '' };
+    return { index: 0, message: '' };
   },
 
   render: function() {
     var content = Linkify.transform(this.state.message).concat(
       <span
-        className={this.state.typing ? 'cursor' : 'cursor blink'}
+        className={classNames('cursor', {
+          'cursor--insert': this.state.insert,
+          'blink': !this.state.typing 
+        })}
         key='cursor'
       />
     );
 
     return (
-      <div>
-        <div className='name'>
-          <h1>Tong Liu</h1>
-        </div>
+      <div className='main-wrapper'>
         <div className='words'>{content}</div>
-        <nav className='buttons'>
-          <ul>
-            <li><a className='button' href='resume'>Resume</a></li>
-            <li><a className='button' href='contact'>Contact</a></li>
-          </ul>
-        </nav>
       </div>
     );
   },
 
   componentDidMount: function() {
-    setTimeout(this._displayMessage, getThinkingDuration());
+    var that = this;
+    this.timeout = setTimeout(function() {
+      that.setState({ insert: true });
+      that._displayMessage(1000);
+    }, 3000);
   },
 
-  _displayMessage: function() {
-    var message, callback;
-    if (messages.length) {
-      var idx = Math.floor(Math.random() * messages.length);
-      message = messages[idx]; 
-      messages.splice(idx, 1);
-      callback = this._removeMessage;
-    } else {
-      message = 'Thanks for reading, see more below';
-      callback = null;
+  _displayMessage: function(wait) {
+    var message = messages[this.state.index];
+    var chars = message.split('').concat(' ');
+    if (this.state.index > 0) {
+      chars.unshift('\n', '\n');
     }
 
-    var chars = message.split('').concat(' ');
-    this.setState({ typing: true });
-    this._recursiveAdd(chars, callback);
+    var that = this;
+    setTimeout(function() {
+      that.setState({ typing: true });
+      that._recursiveAdd(chars);
+    }, wait);
   },
 
-  _removeMessage: function() {
-    this.setState({ typing: true });
-    this._recursiveRemove();
-  },
-
-  _recursiveAdd: function(arr, finishCallback) {
+  _recursiveAdd: function(arr) {
+    var char = arr.shift();
     this.setState(function (prevState) {
-      return { message: prevState.message + arr.shift() };
+      return { message: prevState.message + char };
     }, function () {
       if (arr.length) {
-        setTimeout(
-          this._recursiveAdd.bind(this, arr, finishCallback),
-          TYPING_DELAY
-        );
+        var delay = (char == '\n')? ENTER_DELAY : TYPING_DELAY;
+        setTimeout(this._recursiveAdd.bind(this, arr), delay);
       } else {
-        this.setState({ typing: false });
-        if (finishCallback) {
-          setTimeout(finishCallback, DISPLAY_DURATION);
-        }
+        this.setState(
+          { index: this.state.index + 1, typing: false },
+          this._nextMessage
+        );
       }
     });
   },
 
-  _recursiveRemove: function() {
-    var text = this.state.message.slice(0, -1);
-    this.setState({ message: text }, function() {
-      if (text.length) {
-        setTimeout(this._recursiveRemove, BACKSPACE_DELAY);
-      } else {
-        this.setState({ typing: false });
-        setTimeout(this._displayMessage, getThinkingDuration());
-      }
-    });
+  _nextMessage: function() {
+    if (this.state.index < messages.length) {
+      this._displayMessage(THINKING_DELAY);
+    } else {
+      setTimeout(this.setState.bind(this, { insert: false }), 3000);
+    }
   }
 });
 
