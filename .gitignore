@@ -3,3 +3,8 @@
 *~
 .DS_Store
 node_modules/
+
+# Ignore generated files
+styles.css
+bundle.js
+bundle.min.js
