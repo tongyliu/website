@@ -3,17 +3,51 @@ var ReactDOM = require('react-dom');
 var classNames = require('classnames');
 var _ = require('lodash');
 
-var TYPING_DELAY = 80;
+var TYPING_DELAY = 60;
 var ENTER_DELAY = 160;
 var THINKING_DELAY = 2000;
+var INITIAL_PAUSE = 1000;
+var BLINK_PAUSE = 3000;
+
+var COLORS = ['cyan', 'blue', 'red', 'orange', 'coral'];
+
+var getRandomColor = function(avoidColor) {
+  var color;
+  var i = 0;
+  do {
+    color = COLORS[Math.floor(Math.random() * COLORS.length)];
+    i += 1;
+  } while (avoidColor && color == avoidColor && i < 5);
+  return color;
+};
 
 var messages = [ 
-  'Hi, I\'m Tong!',
   'I\'m a software engineer & student at the University of Michigan.',
   'This summer, I\'ll be working at Cisco. I\'ve also worked on full-stack and mobile development at places including Weebly and Companion.',
   'This site is still under construction ' + String.fromCharCode(8212) + ' but you can view more on my resume, GitHub, or LinkedIn.',
   'Thanks for stopping by!'
 ];
+
+var ColoredLink = React.createClass({
+  getInitialState: function() {
+    return { color: getRandomColor() };
+  },
+
+  render: function() {
+    return (
+      <a
+        className={this.state.color}
+        href={this.props.href}
+        onMouseEnter={this._changeColor}>
+        {this.props.str}
+      </a>
+    );
+  },
+
+  _changeColor: function() {
+    this.setState({ color: getRandomColor(this.state.color) });
+  }
+});
 
 var Linkify = (function() {
   exports = {};
@@ -37,7 +71,7 @@ var Linkify = (function() {
     return _.chain(parts).filter().map(function(str) {
       if (_linkMappings[str]) {
         var key = str + matchCount++;
-        return <a key={key} href={_linkMappings[str]}>{str}</a>;
+        return <ColoredLink key={key} href={_linkMappings[str]} str={str}/>;
       } else {
         return str;
       }
@@ -52,13 +86,13 @@ Linkify.init({
   Weebly: 'https://www.weebly.com',
   Companion: 'http://companionapp.io',
   GitHub: 'https://github.com/tongyliu',
-  LinkedIn: 'https://www.linkedin.com/in/tong-liu-7a55489b',
+  LinkedIn: 'https://www.linkedin.com/in/tongyliu',
   resume: 'resume.pdf'
 });
 
 var Teletype = React.createClass({
   getInitialState: function() {
-    return { index: 0, message: '' };
+    return { index: 0, message: '', headingColor: getRandomColor() };
   },
 
   render: function() {
@@ -74,6 +108,11 @@ var Teletype = React.createClass({
 
     return (
       <div className='main-wrapper'>
+        <div
+          className={classNames('heading', this.state.headingColor)}
+          onClick={this._changeHeadingColor}>
+          Hi, I'm Tong.
+        </div>
         <div className='words'>{content}</div>
       </div>
     );
@@ -81,10 +120,14 @@ var Teletype = React.createClass({
 
   componentDidMount: function() {
     var that = this;
-    this.timeout = setTimeout(function() {
+    setTimeout(function() {
       that.setState({ insert: true });
-      that._displayMessage(1000);
-    }, 3000);
+      that._displayMessage(INITIAL_PAUSE);
+    }, BLINK_PAUSE);
+  },
+
+  _changeHeadingColor: function() {
+    this.setState({ headingColor: getRandomColor(this.state.headingColor) });
   },
 
   _displayMessage: function(wait) {
@@ -122,7 +165,7 @@ var Teletype = React.createClass({
     if (this.state.index < messages.length) {
       this._displayMessage(THINKING_DELAY);
     } else {
-      setTimeout(this.setState.bind(this, { insert: false }), 3000);
+      setTimeout(this.setState.bind(this, { insert: false }), BLINK_PAUSE);
     }
   }
 });

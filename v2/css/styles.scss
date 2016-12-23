@@ -7,9 +7,16 @@
 /*= Main
 ------------------------------------------------------------------------------*/
 
-$bg-color: #FFFFFF;
-$font-color: #000000;
-$accent-color: #1D5086;
+$black: #4c4a4b;
+$white: #ffffff;
+$cyan: #1178b3;
+$blue: #1d5086;
+$red: #fc6367;
+$orange: #fd9c28;
+$coral: #ff7466;
+
+$bg-color: $white;
+$font-color: $black;
 
 html, body {
 	position: relative;
@@ -17,6 +24,8 @@ html, body {
 	margin: 0 auto;
 	padding: 0;
 	font-family: 'Source Code Pro';
+	background-color: $bg-color;
+	min-width: 200px;
 }
 
 .main-wrapper {
@@ -26,8 +35,27 @@ html, body {
 	transform: translate(-50%, -50%);
 	width: 100%;
 	max-width: 960px;
+	max-height: 100vh;
+	overflow: auto;
 	padding: 0 80px;
 	box-sizing: border-box;
+}
+
+.heading {
+	font-family: 'Helvetica Neue', 'Roboto';
+	font-size: 2.5em;
+	font-weight: 900;
+	margin-bottom: 30px;
+	display: inline-block;
+	cursor: pointer;
+	user-select: none;
+	transition: 0.5s ease color;
+
+	&.cyan { color: $cyan; }
+	&.blue { color: $blue; }
+	&.red { color: $red; }
+	&.orange { color: $orange; }
+	&.coral { color: $coral; }
 }
 
 .words {
@@ -45,28 +73,34 @@ html, body {
 		display: inline-block;
 		transition: 0.5s ease color;
 
-		// &::after {
-		// 	content: '';
-		// 	display: block;
-		// 	position: absolute;
-		// 	bottom: -2px;
-		// 	top: -2px;
-		// 	left: -2px;
-		// 	right: -2px;
-		// 	background-color: $accent-color;
-		// 	transform: scale(1, 0) translate3D(0, 0, 0);
-		// 	transform-origin: 50% 100%;
-		// 	z-index: -1;
-		// 	transition: 0.5s ease transform;
-		// }
+		&::after {
+			content: '';
+			display: block;
+			position: absolute;
+			bottom: -2px;
+			top: -2px;
+			left: -2px;
+			right: -2px;
+			background-color: $font-color;
+			transform: scale(1, 0) translate3D(0, 0, 0);
+			transform-origin: 50% 100%;
+			z-index: -1;
+			transition: 0.5s ease transform;
+		}
 
-		// &:hover {
-		// 	color: $bg-color;
+		&.cyan::after { background-color: $cyan; }
+		&.blue::after { background-color: $blue; }
+		&.red::after { background-color: $red; }
+		&.orange::after { background-color: $orange; }
+		&.coral::after { background-color: $coral; }
 
-		// 	&::after {
-		// 		transform: scale(1, 1) translate3D(0, 0, 0);
-		// 	}
-		// }
+		&:hover {
+			color: $bg-color;
+
+			&::after {
+				transform: scale(1, 1) translate3D(0, 0, 0);
+			}
+		}
 	}
 }
 
@@ -102,21 +136,21 @@ html, body {
 ------------------------------------------------------------------------------*/
 
 @media screen and (max-width: 500px) {
-	.main-wrapper {
-		padding: 0 40px;
+	body {
+		font-size: 91%;
 	}
 
-	.words {
-		font-size: 1.1em;
+	.main-wrapper {
+		padding: 0 40px;
 	}
 }
 
 @media screen and (max-width: 400px) {
-	.main-wrapper {
-		padding: 0 20px;
+	body {
+		font-size: 83%;
 	}
 
-	.words {
-		font-size: 1em;
+	.main-wrapper {
+		padding: 0 20px;
 	}
 }
