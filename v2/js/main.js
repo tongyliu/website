@@ -114,13 +114,21 @@ var Teletype = React.createClass({
           Hi, I'm Tong.
         </div>
         <div className='words'>{content}</div>
+        <div
+          className={classNames('skip-btn', {
+            'transition-enabled': this.state.fullMessageShown,
+            'hidden': this.state.finishedAnimating
+          })}
+          onClick={this._skipToEnd}>
+          Skip
+        </div>
       </div>
     );
   },
 
   componentDidMount: function() {
     var that = this;
-    setTimeout(function() {
+    this.timeout = setTimeout(function() {
       that.setState({ insert: true });
       that._displayMessage(INITIAL_PAUSE);
     }, BLINK_PAUSE);
@@ -138,7 +146,7 @@ var Teletype = React.createClass({
     }
 
     var that = this;
-    setTimeout(function() {
+    this.timeout = setTimeout(function() {
       that.setState({ typing: true });
       that._recursiveAdd(chars);
     }, wait);
@@ -151,7 +159,7 @@ var Teletype = React.createClass({
     }, function () {
       if (arr.length) {
         var delay = (char == '\n')? ENTER_DELAY : TYPING_DELAY;
-        setTimeout(this._recursiveAdd.bind(this, arr), delay);
+        this.timeout = setTimeout(this._recursiveAdd.bind(this, arr), delay);
       } else {
         this.setState(
           { index: this.state.index + 1, typing: false },
@@ -165,8 +173,22 @@ var Teletype = React.createClass({
     if (this.state.index < messages.length) {
       this._displayMessage(THINKING_DELAY);
     } else {
-      setTimeout(this.setState.bind(this, { insert: false }), BLINK_PAUSE);
+      this.setState({ fullMessageShown: true });
+      this.timeout = setTimeout(
+        this.setState.bind(this, { insert: false, finishedAnimating: true }),
+        BLINK_PAUSE
+      );
     }
+  },
+
+  _skipToEnd: function() {
+    clearTimeout(this.timeout);
+    this.setState({
+      message: messages.join('\n\n') + ' ',
+      typing: false,
+      insert: false,
+      finishedAnimating: true
+    });
   }
 });
 

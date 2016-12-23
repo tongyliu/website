@@ -9,6 +9,7 @@
 
 $black: #4c4a4b;
 $white: #ffffff;
+$grey: #b7b7b7;
 $cyan: #1178b3;
 $blue: #1d5086;
 $red: #fc6367;
@@ -131,6 +132,25 @@ html, body {
 		opacity: 0;
 	}
 }
+
+.skip-btn {
+	color: $grey;
+	font-style: italic;
+	cursor: pointer;
+	user-select: none;
+	display: inline-block;
+	margin-top: 30px;
+
+	&.transition-enabled {
+		transition: 0.5s ease opacity;
+	}
+
+	&.hidden {
+		opacity: 0;
+		cursor: default;
+	}
+}
+
 
 /*= Responsive
 ------------------------------------------------------------------------------*/
