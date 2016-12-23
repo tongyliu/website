@@ -21,10 +21,11 @@ var getRandomColor = function(avoidColor) {
   return color;
 };
 
-var messages = [ 
-  'I\'m a software engineer & student at the University of Michigan.',
-  'This summer, I\'ll be working at Cisco. I\'ve also worked on full-stack and mobile development at places including Weebly and Companion.',
-  'This site is still under construction ' + String.fromCharCode(8212) + ' but you can view more on my resume, GitHub, or LinkedIn.',
+var messages = [
+  'I\'m a software engineer & senior at the University of Michigan.',
+  'My interests include full-stack development, machine learning, and economics.',
+  'After graduation, I\'ll be working at Microsoft. I\'ve previously worked on full-stack and mobile projects at places including Cisco, Weebly and Companion.',
+  'Feel free to view more on my resume, GitHub, or LinkedIn.',
   'Thanks for stopping by!'
 ];
 
@@ -82,6 +83,7 @@ var Linkify = (function() {
 })();
 
 Linkify.init({
+  Microsoft: 'https://www.microsoft.com/cognitive',
   Cisco: 'https://www.cisco.com',
   Weebly: 'https://www.weebly.com',
   Companion: 'http://companionapp.io',
