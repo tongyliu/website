@@ -7,17 +7,17 @@
 /*= Main
 ------------------------------------------------------------------------------*/
 
-$black: #4c4a4b;
+$black: #15151f;
 $white: #ffffff;
-$grey: #b7b7b7;
-$cyan: #1178b3;
-$blue: #1d5086;
+$grey: #a1a1a1;
+$maize: #c5b143;
+$blue: #43abde;
+$green: #63b400;
 $red: #fc6367;
-$orange: #fd9c28;
-$coral: #ff7466;
+$purple: #8058d2;
 
-$bg-color: $white;
-$font-color: $black;
+$bg-color: $black;
+$font-color: $white;
 
 html, body {
 	position: relative;
@@ -52,11 +52,11 @@ html, body {
 	user-select: none;
 	transition: 0.5s ease color;
 
-	&.cyan { color: $cyan; }
+	&.maize { color: $maize; }
 	&.blue { color: $blue; }
+	&.green { color: $green; }
 	&.red { color: $red; }
-	&.orange { color: $orange; }
-	&.coral { color: $coral; }
+	&.purple { color: $purple; }
 }
 
 .words {
@@ -89,11 +89,11 @@ html, body {
 			transition: 0.5s ease transform;
 		}
 
-		&.cyan::after { background-color: $cyan; }
+		&.maize::after { background-color: $maize; }
 		&.blue::after { background-color: $blue; }
+		&.green::after { background-color: $green; }
 		&.red::after { background-color: $red; }
-		&.orange::after { background-color: $orange; }
-		&.coral::after { background-color: $coral; }
+		&.purple::after { background-color: $purple; }
 
 		&:hover {
 			color: $bg-color;

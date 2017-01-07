@@ -9,7 +9,7 @@ var THINKING_DELAY = 2000;
 var INITIAL_PAUSE = 1000;
 var BLINK_PAUSE = 3000;
 
-var COLORS = ['cyan', 'blue', 'red', 'orange', 'coral'];
+var COLORS = ['maize', 'blue', 'green', 'red', 'purple'];
 
 var getRandomColor = function(avoidColor) {
   var color;
