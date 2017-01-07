@@ -23,7 +23,11 @@ gulp.task('js', function() {
     .pipe(gulp.dest('js/'));
 });
 
-gulp.task('minify-js', ['js'], function() {
+gulp.task('set-prod-env', function() {
+  process.env.NODE_ENV = 'production';
+});
+
+gulp.task('minify-js', ['set-prod-env', 'js'], function() {
   gulp.src('js/bundle.js')
     .pipe(uglify())
     .pipe(rename('bundle.min.js'))
