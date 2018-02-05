@@ -22,9 +22,9 @@ var getRandomColor = function(avoidColor) {
 };
 
 var messages = [
-  'I\'m a software engineer & senior at the University of Michigan.',
+  'I\'m currently a software engineer at Microsoft.',
   'My interests include full-stack development, machine learning, and economics.',
-  'After graduation, I\'ll be working at Microsoft. I\'ve previously worked on full-stack and mobile projects at places including Cisco, Weebly and Companion.',
+  'I\'ve previously worked on full-stack and mobile projects at places including Cisco, Weebly, and Companion.',
   'Feel free to view more on my resume, GitHub, or LinkedIn.',
   'Thanks for stopping by!'
 ];
