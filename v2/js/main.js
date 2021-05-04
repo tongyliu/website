@@ -22,7 +22,7 @@ var getRandomColor = function(avoidColor) {
 };
 
 var messages = [
-  'I\'m currently a software engineer at Microsoft.',
+  'I\'m currently a software engineer at Nextdoor.',
   'My interests include full-stack development, machine learning, and economics.',
   'I\'ve previously worked on full-stack and mobile projects at places including Cisco, Weebly, and Companion.',
   'Feel free to view more on my resume, GitHub, or LinkedIn.',
